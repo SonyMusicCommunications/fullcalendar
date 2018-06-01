@@ -4532,9 +4532,7 @@ var EventRenderer = /** @class */ (function () {
         var cf2 = f2.componentFootprint;
         var r1 = cf1.unzonedRange;
         var r2 = cf2.unzonedRange;
-        return r1.startMs - r2.startMs || // earlier events go first
-            (r2.endMs - r2.startMs) - (r1.endMs - r1.startMs) || // tie? longer events go first
-            cf2.isAllDay - cf1.isAllDay || // tie? put all-day events first (booleans cast to 0/1)
+        return cf2.isAllDay - cf1.isAllDay || // tie? put all-day events first (booleans cast to 0/1)
             util_1.compareByFieldSpecs(f1.eventDef, f2.eventDef, this.view.eventOrderSpecs, f1.eventDef.miscProps, f2.eventDef.miscProps);
     };
     return EventRenderer;
